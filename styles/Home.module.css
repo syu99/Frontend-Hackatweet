@@ -1,22 +1,23 @@
-.main {
+.container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  min-height: 100vh;
-  padding: 4rem 0;
 }
 
-.title {
-  line-height: 1.15;
-  font-size: 4rem;
+.home {
+  width: 50%;
+  border: 1px solid black;
+  height: 100vh;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+.hashtag {
+  width: 30%;
+  border: 1px solid black;
+  height: 100vh;
 }
 
-.title a:hover, .title a:focus, .title a:active {
-  text-decoration: underline;
+.user {
+  width: 20%;
+  border: 1px solid black;
+  height: 100vh;
 }
