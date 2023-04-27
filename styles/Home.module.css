@@ -2,13 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #161d28;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .home {
   display: flex;
   flex-direction: column;
   width: 50%;
-  border: 1px solid black;
+  border: 1px solid #333a45;
   height: 100vh;
 }
 
@@ -16,7 +19,7 @@
   display: flex;
   flex-direction: column;
   width: 30%;
-  border: 1px solid black;
+  border: 1px solid #333a45;
   height: 100vh;
 }
 
@@ -24,6 +27,6 @@
   display: flex;
   flex-direction: column;
   width: 20%;
-  border: 1px solid black;
+  border: 1px solid #333a45;
   height: 100vh;
 }
