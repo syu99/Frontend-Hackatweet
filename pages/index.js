@@ -3,7 +3,7 @@ import Login from '../components/Login';
 
 
 function Index() {
-  return <Home />;
+  return <Login />;
  
 }
 
