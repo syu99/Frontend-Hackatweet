@@ -29,4 +29,49 @@
   width: 20%;
   border: 1px solid #333a45;
   height: 100vh;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.egglogo {
+  width: 50px;
+  height: 50px;
+  border-radius: 70px;
+}
+
+.avataruser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.egguser {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 30px;
+  justify-content: flex-start;
+}
+
+.buttonLogout {
+  cursor: pointer;
+  background-color: transparent;
+  border: solid 1px #333a45;
+  border-radius: 20px;
+  color: white;
+  width: 90px;
+  height: 30px;
+  font-weight: bold;
 }
