@@ -7,7 +7,7 @@ import Home from "../components/Home";
 function App({ Component, pageProps }) {
   return (
     <>
-      <Home />
+      <Login />
     </>
   );
 }
