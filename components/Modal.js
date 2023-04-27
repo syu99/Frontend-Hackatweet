@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../styles/Modal.module.css";
 import SignUp from "./SignUp";
+import SignIn from "./SignIn";
 
 function Modal() {
   return (
@@ -12,7 +13,7 @@ function Modal() {
         </div>
         <div className={styles.modalBody}>
           {/* composant signUP ou signIn en fonction du button de la page Login */}
-          <SignUp></SignUp>
+          <SignIn></SignIn>
         </div>
       </div>
     </div>
