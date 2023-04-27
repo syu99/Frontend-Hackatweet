@@ -4,10 +4,10 @@ function Login() {
   return (
     <div className={styles.container}>
       <div className={styles.leftBackground}>
-        {/* <img src="/twitter-logo-reverse.png" alt="Twitter Logo" /> */}
+        <img className={styles.leftLogo} src="/twitter-logo-reverse.png" alt="Twitter Logo" />
       </div>
       <div className={styles.rightBackground}>
-        {/* <img className={styles.logo} src="/twitter-logo-reverse.png" alt="Twitter Logo" /> */}
+        <img className={styles.logo} src="/twitter-logo-reverse.png" alt="Twitter Logo" />
         <h1 className={styles.title}>
           See What’s <br />
           happening
