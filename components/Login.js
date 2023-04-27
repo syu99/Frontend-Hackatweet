@@ -6,17 +6,23 @@ import Modal from './Modal';
 //Ajout de l'état pour gérer l'affichage du composant Modal et le type de connexion (SignIn ou SignUp) :
 function Login() {
   const [showModal, setShowModal] = useState(false);
-  const [connectType, setConnectType] = useState('');
+  const [modalType, setModalType] = useState("SignIn");
 
-  //Création des fonctions pour gérer les clics sur les boutons signInBtn et signupBtn :
+
+  
+  // Fonction qui change le type de modal à afficher et l'affiche lors du clic sur le bouton "Sign In"
   const handleSignInClick = () => {
-    setConnectType('SignIn');
+    setModalType("SignIn");
     setShowModal(true);
   };
-
+  // Fonction qui change le type de modal à afficher et l'affiche lors du clic sur le bouton "Sign Up"
   const handleSignUpClick = () => {
-    setConnectType('SignUp');
+    setModalType("SignUp");
     setShowModal(true);
+  };
+ // Fonction qui ferme le modal lors du clic sur la croix ou en dehors du contenu du modal
+  const handleClose = () => {
+    setShowModal(false);
   };
   
 
@@ -40,7 +46,7 @@ function Login() {
           Sign in
         </button>
       </div>
-      <Modal show={showModal} connect={connectType} />
+      <Modal show={showModal} connect={modalType} onClose={handleClose} />
     </div>
   );
 }
