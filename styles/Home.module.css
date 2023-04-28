@@ -1,3 +1,5 @@
+.main {
+}
 .container {
   display: flex;
   justify-content: space-between;
@@ -113,4 +115,25 @@
   color: white;
   font-size: 20px;
   border: solid 1px transparent;
+}
+
+.titreUser {
+  display: flex;
+  gap: 10px;
+}
+
+.bodyHome {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  /* gap: 15px; */
+}
+
+.tweet {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px #333a45;
+  gap: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
