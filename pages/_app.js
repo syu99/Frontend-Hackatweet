@@ -9,7 +9,7 @@ import SignUp from "../components/SignUp";
 function App({ Component, pageProps }) {
   return (
     <>
-      <Login />
+      <Home />
     </>
   );
 }

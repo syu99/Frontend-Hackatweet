@@ -9,6 +9,10 @@ const handleLogout = () => {
 function Home() {
   const [tweet, setTweet] = useState("");
   let nbrChar = tweet.length;
+
+  let firstName = "firstName";
+  let userName = "userName";
+
   return (
     <div>
       <div className={styles.container}>
@@ -28,8 +32,8 @@ function Home() {
                 className={styles.egglogo}
               />
               <div className={styles.userinfo}>
-                <p>firstname</p>
-                <p>username</p>
+                <p>{firstName}</p>
+                <p>{userName}</p>
               </div>
             </div>
             <button
