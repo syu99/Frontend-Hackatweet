@@ -21,6 +21,7 @@ function Home() {
 
   let nbrChar = tweet.length;
 
+  // User
   let firstName = "firstName";
   let userName = "userName";
   //action de donnection
@@ -54,6 +55,20 @@ function Home() {
       method: "POST",
 
       headers: { "Content-Type": "application/json" },
+
+      // Trends
+      // function TweetCounter(props) {
+      //   const [count, setCount] = useState(0);
+
+      //   const handleTweetSend = (hashtag) => {
+      //     if (hashtag === props.hashtag) {
+      //       setCount((prevCount) => prevCount + 1);
+      //     }
+      //   };
+
+      //   const handleTweetDelete = () => {
+      //     setCount(0);
+      //   };
 
       body: JSON.stringify({
         username: "username",
@@ -124,7 +139,12 @@ function Home() {
           <div className={styles.bodyHome}>{listTweets}</div>
         </div>
         <div className={styles.hashtag}>
-          <h3>Trend</h3>
+          <h3>Trends</h3>
+        </div>
+        <div>
+          {/* <div>Hashtag : {props.hashtag}</div>
+            <div>Nombre de tweets : {count}</div>
+            <button onClick={handleTweetDelete}>Supprimer</button> */}
         </div>
       </div>
     </div>
