@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { login } from "../reducers/user";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
@@ -9,6 +11,30 @@ function Home() {
   const [tweet, setTweet] = useState("");
   const [dataTweet, setDataTweet] = useState([]);
   const [majTweet, setMajTweet] = useState(false);
+  const userToken = useSelector((state) => state.user.value.token);
+  const dispatch = useDispatch();
+
+  //recup des données user pour le stocker dans le store
+  fetch("http://localhost:3000/users/getUser", {
+    method: "POST",
+
+    headers: { "Content-Type": "application/json" },
+
+    body: JSON.stringify({
+      token: userToken,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("userinfo");
+      dispatch(
+        login({
+          username: data.User.username,
+          firstname: data.User.firstname,
+          token: userToken,
+        })
+      );
+    });
 
   useEffect(() => {
     console.log("new tweet");
@@ -20,15 +46,15 @@ function Home() {
       });
   }, [majTweet]);
 
-  console.log(dataTweet);
+  //console.log(dataTweet);
 
   let nbrChar = tweet.length;
 
   // User
   let firstName = "firstName";
   let userName = "userName";
-  const userToken = useSelector((state) => state.user.value.token);
-  console.log(userToken);
+
+  //console.log(userToken);
 
   //action de connection
   const handleLogout = () => {
@@ -83,20 +109,6 @@ function Home() {
       method: "POST",
 
       headers: { "Content-Type": "application/json" },
-
-      // Trends
-      // function TweetCounter(props) {
-      //   const [count, setCount] = useState(0);
-
-      //   const handleTweetSend = (hashtag) => {
-      //     if (hashtag === props.hashtag) {
-      //       setCount((prevCount) => prevCount + 1);
-      //     }
-      //   };
-
-      //   const handleTweetDelete = () => {
-      //     setCount(0);
-      //   };
 
       body: JSON.stringify({
         username: "username",
