@@ -22,7 +22,6 @@ function Login() {
   const handleClose = () => {
     setShowModal(false);
   };
-  console.log(showModal);
   return (
     <div className={styles.container}>
       <div className={styles.leftBackground}>

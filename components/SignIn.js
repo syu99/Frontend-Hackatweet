@@ -19,7 +19,7 @@ function SignIn() {
       .then((response) => response.json())
       .then((data) => {
         if (data.result) {
-          console.log("Connexion réussie:", data.token);
+          console.log("Connexion réussie");
           // Stocker le token et rediriger l'utilisateur vers la page d'accueil
         } else {
           console.error("Erreur de connexion:", data.error);
