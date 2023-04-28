@@ -60,22 +60,32 @@ function Home() {
   //console.log(userToken);
 
   //action de connection
+  // const handleLogout = () => {
+  //   dispatch(logout());
+  // };
   const handleLogout = () => {
-    dispatch(logout());
+    // Supprimer le token JWT du stockage local (ou des cookies)
+    localStorage.removeItem("token");
+    // Rediriger l'utilisateur vers la page d'accueil
+    window.location.href = "/";
   };
 
-  let heartIconStyle = { cursor: "pointer" };
+
   // Like tweet
-  const handleLikeTweet = () => {
-    heartIconStyle = { color: "red", cursor: "pointer" };
-  };
+  // const handleLikeTweet = () => {
+  //   props.updateLikedTweets(props.title);
+  // };
+  // let heartIconStyle = { cursor: "pointer" };
+  // if (props.isLiked) {
+  //   heartIconStyle = { color: "red", cursor: "pointer" };
+  // }
 
   //action créer un tweet
 
   //affichage des tweets dans le front
   const listTweets = dataTweet.map((data, i) => {
     return (
-      <div key={i} className={styles.tweet}>
+      <div className={styles.tweet}>
         <div className={styles.titreUser}>
           <img
             src="profile-egg.png"
@@ -146,11 +156,9 @@ function Home() {
                 <p>@{userName}</p>
               </div>
             </div>
-            <button
-              className={styles.buttonLogout}
-              onClick={() => handleLogout()}
-            >
-              Logout
+            {/* au click sur le bouton logout, on supprime le token du localstorage */}
+            <button className={styles.buttonLogout} onClick={handleLogout}>
+      Logout
             </button>
           </div>
         </div>
