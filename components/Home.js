@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 
@@ -6,6 +7,8 @@ const handleLogout = () => {
 };
 
 function Home() {
+  const [tweet, setTweet] = useState("");
+  let nbrChar = tweet.length;
   return (
     <div>
       <div className={styles.container}>
@@ -39,7 +42,20 @@ function Home() {
         </div>
 
         <div className={styles.home}>
-          <h3>Home</h3>
+          <div className={styles.headerHome}>
+            <h3>Home</h3>
+            <input
+              className={styles.input}
+              type="text"
+              onChange={(e) => setTweet(e.target.value)}
+              value={tweet}
+              placeholder="What's up?"
+            />
+            <div className={styles.botHeaderHome}>
+              <p>{nbrChar}/280</p>
+              <button className={styles.buttonTweet}>Tweet</button>
+            </div>
+          </div>
         </div>
         <div className={styles.hashtag}>
           <h3>Trend</h3>
