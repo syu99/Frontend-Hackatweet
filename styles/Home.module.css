@@ -79,6 +79,7 @@
 .headerHome {
   display: flex;
   flex-direction: column;
+  border-bottom: solid 1px #333a45;
 }
 
 .input {

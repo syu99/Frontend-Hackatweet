@@ -45,6 +45,7 @@ function Home() {
           <div className={styles.headerHome}>
             <h3>Home</h3>
             <input
+              maxLength={280}
               className={styles.input}
               type="text"
               onChange={(e) => setTweet(e.target.value)}
