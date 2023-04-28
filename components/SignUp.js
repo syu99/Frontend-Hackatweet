@@ -2,12 +2,15 @@ import React from "react";
 import styles from "../styles/SignUp.module.css";
 
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../reducers/user";
 
- // État local pour stocker les valeurs des champs de formulaire
+// État local pour stocker les valeurs des champs de formulaire
 function SignUp() {
   const [firstname, setFirstName] = useState("");
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   // Fonction pour gérer la soumission du formulaire
   const handleSubmit = (e) => {
@@ -23,11 +26,21 @@ function SignUp() {
       .then((data) => {
         if (data.result) {
           console.log("Inscription réussie:", data.token);
+
+          dispatch(
+            login({
+              username: username,
+              firstname: firstname,
+              token: data.token,
+            })
+          );
+
+          location.href = "/tweet";
           // Stocker le token et rediriger l'utilisateur vers la page d'accueil
         } else {
           console.error("Erreur d'inscription:", data.error);
         }
-      })
+      });
   };
 
   return (
