@@ -74,6 +74,9 @@
   width: 90px;
   height: 30px;
   font-weight: bold;
+  align-items: flex-start;
+  margin-top: 10px;
+  align-self: flex-start;
 }
 
 .headerHome {
