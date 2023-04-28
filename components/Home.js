@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 function Home() {
   const [tweet, setTweet] = useState("");
@@ -24,10 +27,22 @@ function Home() {
   // User
   let firstName = "firstName";
   let userName = "userName";
-  //action de donnection
+  const userToken = useSelector((state) => state.user.value.token);
+  console.log(userToken);
+
+  //action de connection
   const handleLogout = () => {
     dispatch(logout());
   };
+
+  // Like tweet
+  // const handleLikeTweet = () => {
+  //   props.updateLikedTweets(props.title);
+  // };
+  // let heartIconStyle = { cursor: "pointer" };
+  // if (props.isLiked) {
+  //   heartIconStyle = { color: "red", cursor: "pointer" };
+  // }
 
   //action créer un tweet
 
@@ -46,6 +61,19 @@ function Home() {
           </p>
         </div>
         <div className={styles.contenuTweet}>{data.tweet}</div>
+        {/* <div className={styles.iconContainer}>
+          <span>
+            <FontAwesomeIcon
+              icon={faHeart}
+              onClick={() => handleLikeTweet()}
+              style={heartIconStyle}
+              className="like"
+            />
+          </span>
+          <span className={styles.vote}>
+            {heart} ({props.voteCount})
+          </span>
+        </div> */}
       </div>
     );
   });
