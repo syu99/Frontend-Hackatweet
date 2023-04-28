@@ -1,12 +1,15 @@
 import React from "react";
 import styles from "../styles/SignUp.module.css";
-
 import { useState } from "react";
+
+import { useDispatch } from "react-redux";
+import { login } from "../reducers/user";
 
 function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const dispatch = useDispatch();
   // Appel à l'API pour la connexion
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +22,12 @@ function SignIn() {
       .then((response) => response.json())
       .then((data) => {
         if (data.result) {
-          console.log("Connexion réussie");
+          console.log("Connexion réussie", data);
+
+          dispatch(login({ username: username, token: data.token }));
+
+          location.href = "/tweet";
+
           // Stocker le token et rediriger l'utilisateur vers la page d'accueil
         } else {
           console.error("Erreur de connexion:", data.error);
