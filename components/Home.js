@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { login } from "../reducers/user";
+import { login, logout } from "../reducers/user";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
@@ -65,11 +65,11 @@ function Home() {
   // };
   const handleLogout = () => {
     // Supprimer le token JWT du stockage local (ou des cookies)
-    localStorage.removeItem("token");
+    // localStorage.removeItem("token");
+    dispatch(logout());
     // Rediriger l'utilisateur vers la page d'accueil
     window.location.href = "/";
   };
-
 
   // Like tweet
   // const handleLikeTweet = () => {
@@ -157,8 +157,11 @@ function Home() {
               </div>
             </div>
             {/* au click sur le bouton logout, on supprime le token du localstorage */}
-            <button className={styles.buttonLogout} onClick={handleLogout}>
-      Logout
+            <button
+              className={styles.buttonLogout}
+              onClick={() => handleLogout()}
+            >
+              Logout
             </button>
           </div>
         </div>
