@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { login } from "../reducers/user";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
@@ -9,7 +11,10 @@ function Home() {
   const [tweet, setTweet] = useState("");
   const [dataTweet, setDataTweet] = useState([]);
   const [majTweet, setMajTweet] = useState(false);
-  const userToken = useSelector((state) => state.user.value.token);
+  const [firstName, setFirstName] = useState("");
+  const [userName, setUserName] = useState("");
+
+  const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
 
   //recup des données user pour le stocker dans le store
@@ -19,7 +24,7 @@ function Home() {
     headers: { "Content-Type": "application/json" },
 
     body: JSON.stringify({
-      token: userToken,
+      token: user.token,
     }),
   })
     .then((response) => response.json())
@@ -29,9 +34,11 @@ function Home() {
         login({
           username: data.User.username,
           firstname: data.User.firstname,
-          token: userToken,
+          token: user.token,
         })
       );
+      setFirstName(user.firstname);
+      setUserName(user.username);
     });
 
   useEffect(() => {
@@ -49,8 +56,6 @@ function Home() {
   let nbrChar = tweet.length;
 
   // User
-  let firstName = "firstName";
-  let userName = "userName";
 
   //console.log(userToken);
 
@@ -82,7 +87,7 @@ function Home() {
           </p>
         </div>
         <div className={styles.contenuTweet}>{data.tweet}</div>
-        <div className={styles.iconContainer}>
+        {/* <div className={styles.iconContainer}>
           <span>
             <FontAwesomeIcon
               icon={faHeart}
@@ -91,7 +96,10 @@ function Home() {
               className="like"
             />
           </span>
-        </div>
+          <span className={styles.vote}>
+            {heart} ({props.voteCount})
+          </span>
+        </div> */}
       </div>
     );
   });
@@ -103,8 +111,8 @@ function Home() {
       headers: { "Content-Type": "application/json" },
 
       body: JSON.stringify({
-        username: "username",
-        firstname: "firstname",
+        username: userName,
+        firstname: firstName,
         tweet: tweet,
         hashtag: "",
       }),
@@ -135,7 +143,7 @@ function Home() {
               />
               <div className={styles.userinfo}>
                 <p>{firstName}</p>
-                <p>{userName}</p>
+                <p>@{userName}</p>
               </div>
             </div>
             <button
